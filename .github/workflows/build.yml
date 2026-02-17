@@ -31,7 +31,8 @@ jobs:
           flutter build apk --release
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+  uses: actions/upload-artifact@v4
+
         with:
           name: ProCalculator-APK
           path: ProCalculator/build/app/outputs/flutter-apk/app-release.apk
