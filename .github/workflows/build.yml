@@ -9,11 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Unzip project
-        run: unzip ProCalculator_ready.zip
+        run: |
+          unzip ProCalculator_ready.zip
+          ls
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -22,16 +24,16 @@ jobs:
 
       - name: Get dependencies
         run: |
-          cd ProCalculator
+          cd pro_calculator
           flutter pub get
 
       - name: Build APK
         run: |
-          cd ProCalculator
+          cd pro_calculator
           flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ProCalculator-APK
-          path: ProCalculator/build/app/outputs/flutter-apk/app-release.apk
+          path: pro_calculator/build/app/outputs/flutter-apk/app-release.apk
